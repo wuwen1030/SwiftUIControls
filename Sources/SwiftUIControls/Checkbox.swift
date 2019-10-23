@@ -30,13 +30,15 @@ public struct Checkbox: View {
                 ZStack {
                     if !checked {
                         Circle()
-                            .stroke(Color.gray, lineWidth: 3)
+                            .stroke(Color(white: 153.0/255.0), lineWidth: 2)
                     } else {
-                        Circle()
-                            .fill(Color.red)
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 26))
+                            .foregroundColor(.red)
                     }
                 }
-                .frame(width: 44, height: 44)
+                .padding(5)
+                .frame(width: 30, height: 30)
             }
         }
         .onTapGesture {
