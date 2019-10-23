@@ -10,6 +10,11 @@ import SwiftUI
 public struct CheckboxImage {
     var checked: String
     var unchecked: String
+    
+    public init(checked: String, unchecked: String) {
+        self.checked = checked
+        self.unchecked = unchecked
+    }
 }
 
 public struct Checkbox: View {
