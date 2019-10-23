@@ -12,6 +12,13 @@ public struct Checkbox {
     public var checkedImage: String
     public var uncheckedImage: String
     public var valueChanged: (() -> Void)?
+    
+    public init(checked:Binding<Bool>, checkedImage: String, uncheckedImage: String) {
+        self._checked = checked
+        self.checkedImage = checkedImage
+        self.uncheckedImage = uncheckedImage
+    }
+    
     public var body: some View {
         Image(checked ? checkedImage : uncheckedImage)
             .onTapGesture {
