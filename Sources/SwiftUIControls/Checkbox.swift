@@ -20,9 +20,9 @@ public struct CheckboxImage {
 public struct Checkbox: View {
     @Binding var checked: Bool
     var images: CheckboxImage?
-    var valueChanged: (() -> Void)
+    var valueChanged: (() -> Void)?
     
-    public init(checked:Binding<Bool>, images: CheckboxImage? = nil, valueChanged: @escaping () -> Void = {}) {
+    public init(checked:Binding<Bool>, images: CheckboxImage? = nil, valueChanged: (() -> Void)? = nil) {
         self._checked = checked
         self.images = images
         self.valueChanged = valueChanged
@@ -36,10 +36,10 @@ public struct Checkbox: View {
                 ZStack {
                     if !checked {
                         Circle()
-                            .stroke(Color(white: 153.0/255.0), lineWidth: 2)
+                            .stroke(Color(white: 153.0/255.0), lineWidth: 1)
                     } else {
                         Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 26))
+                            .font(.system(size: 22))
                             .foregroundColor(.red)
                     }
                 }
@@ -48,8 +48,8 @@ public struct Checkbox: View {
             }
         }
         .onTapGesture {
-            self.checked.toggle()
-            self.valueChanged()
+            withAnimation { self.checked.toggle() }
+            self.valueChanged?()
         }
     }
 }
