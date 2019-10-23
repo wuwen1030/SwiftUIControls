@@ -7,23 +7,41 @@
 
 import SwiftUI
 
+public struct CheckboxImage {
+    var checked: String
+    var unchecked: String
+}
+
 public struct Checkbox: View {
-    @Binding public var checked: Bool
-    public var checkedImage: String
-    public var uncheckedImage: String
-    public var valueChanged: (() -> Void)?
+    @Binding var checked: Bool
+    var images: CheckboxImage?
+    var valueChanged: (() -> Void)
     
-    public init(checked:Binding<Bool>, checkedImage: String, uncheckedImage: String) {
+    public init(checked:Binding<Bool>, images: CheckboxImage? = nil, valueChanged: @escaping () -> Void = {}) {
         self._checked = checked
-        self.checkedImage = checkedImage
-        self.uncheckedImage = uncheckedImage
+        self.valueChanged = valueChanged
     }
     
     public var body: some View {
-        Image(checked ? checkedImage : uncheckedImage)
-            .onTapGesture {
-                self.checked.toggle()
-                self.valueChanged?()
+        ZStack {
+            if images != nil  {
+                Image(checked ? images!.checked : images!.unchecked)
+            } else {
+                ZStack {
+                    if !checked {
+                        Circle()
+                            .stroke(Color.gray, lineWidth: 3)
+                    } else {
+                        Circle()
+                            .fill(Color.red)
+                    }
+                }
+                .frame(width: 44, height: 44)
+            }
+        }
+        .onTapGesture {
+            self.checked.toggle()
+            self.valueChanged()
         }
     }
 }
