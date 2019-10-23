@@ -8,10 +8,10 @@
 import SwiftUI
 
 public struct Checkbox: View {
-    @Binding var checked: Bool
-    var checkedImage: String
-    var uncheckedImage: String
-    var valueChanged: (() -> Void)?
+    @Binding public var checked: Bool
+    public var checkedImage: String
+    public var uncheckedImage: String
+    public var valueChanged: (() -> Void)?
     public var body: some View {
         Image(checked ? checkedImage : uncheckedImage)
             .onTapGesture {
