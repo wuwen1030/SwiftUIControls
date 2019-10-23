@@ -24,6 +24,7 @@ public struct Checkbox: View {
     
     public init(checked:Binding<Bool>, images: CheckboxImage? = nil, valueChanged: @escaping () -> Void = {}) {
         self._checked = checked
+        self.images = images
         self.valueChanged = valueChanged
     }
     
