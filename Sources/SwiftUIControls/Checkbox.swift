@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-@Binding public var checked: Bool
-public var checkedImage: String
-public var uncheckedImage: String
-public var valueChanged: (() -> Void)?
-public var body: some View {
-    Image(checked ? checkedImage : uncheckedImage)
-        .onTapGesture {
-            self.checked.toggle()
-            self.valueChanged?()
+public struct Checkbox {
+    @Binding public var checked: Bool
+    public var checkedImage: String
+    public var uncheckedImage: String
+    public var valueChanged: (() -> Void)?
+    public var body: some View {
+        Image(checked ? checkedImage : uncheckedImage)
+            .onTapGesture {
+                self.checked.toggle()
+                self.valueChanged?()
+        }
     }
 }
