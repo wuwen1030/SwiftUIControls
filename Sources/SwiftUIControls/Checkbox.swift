@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct Checkbox {
+public struct Checkbox: View {
     @Binding public var checked: Bool
     public var checkedImage: String
     public var uncheckedImage: String
