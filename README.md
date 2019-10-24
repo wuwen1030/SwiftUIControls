@@ -2,7 +2,7 @@
 
 SwitUIControls is a collection of useful controls which are absent in SwiftUI standard library.
 
-- [Checkbox](##Checkbox)
+- [Checkbox](#Checkbox)
 
 ## Checkbox
 ### Usage
