@@ -9,17 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    let items = ["Checkbox"]
     var body: some View {
         NavigationView {
             List {
-                ForEach(items, id: \.self) { item in
-                    NavigationLink(destination: CheckboxExample()) {
-                        Text(item)
-                    }
+                NavigationLink(destination: CheckboxExample()) {
+                    Text("Checkbox")
                 }
             }
-        .navigationBarTitle("Examples")
+            .navigationBarTitle("Examples")
         }
     }
 }

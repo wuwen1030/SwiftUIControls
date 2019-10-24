@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CheckboxExample: View {
-    @State var checked = false
+    @State var checkState = false
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -21,12 +21,20 @@ struct CheckboxExample: View {
                 Text("checked")
             }
             HStack {
-                Checkbox(checked: $checked, images: nil) {
-                    print("Checkbox state: \(self.checked ? "checked" : "unchecked")")
+                Checkbox(checked: $checkState, images: nil) {
+                    print("Checkbox state: \(self.checkState ? "checked" : "unchecked")")
                 }
-                Text(self.checked ? "checked" : "unchecked")
+                Text(self.checkState ? "checked" : "unchecked")
+            }
+            HStack {
+                Checkbox(checked: $checkState, images: CheckboxImage(checked: "check_checked", unchecked: "check_unchecked")) {
+                    
+                }
+                .padding(5)
+                Text(self.checkState ? "checked" : "unchecked")
             }
         }
+        .navigationBarTitle("Checkbox", displayMode: .inline)
     }
 }
 
